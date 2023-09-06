@@ -11,7 +11,7 @@ class CompletedOrderScreen extends StatelessWidget {
       body: ListView.builder(
         itemCount: 10,
         itemBuilder: (ctx,index){
-        return const OrderBox();
+        return const OrderBox(isCompleted: true);
       }),
     );
   }

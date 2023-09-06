@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shreeji_delivery_app/theme/colors.dart';
@@ -13,7 +14,7 @@ class ProfileScreen extends StatelessWidget {
       body: Column(
         children: [
           Container(
-            margin: const EdgeInsets.all(20),
+            margin: EdgeInsets.all(20.h),
             decoration: BoxDecoration(
               color: Colors.white,
               boxShadow: [
@@ -25,7 +26,7 @@ class ProfileScreen extends StatelessWidget {
               ]
             ),
             child: Padding(
-              padding: const EdgeInsets.all(15.0),
+              padding: EdgeInsets.all(15.h),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -45,30 +46,31 @@ class ProfileScreen extends StatelessWidget {
 
   Widget profileOption(String title,String subtitle,String assest){
     return Padding(
-      padding: const EdgeInsets.only(bottom: 20),
+      padding: EdgeInsets.only(bottom: 20.h),
       child: Row(
                 children: [
                   CircleAvatar(
                       backgroundColor: primaryColor,
-                      radius: 17,
-                      child: SvgPicture.asset(assest)),
+                      radius: 15.r,
+                      child: SizedBox(
+                        height: 17.h,width: 17.h,
+                        child: SvgPicture.asset(assest))),
                   Padding(
-                    padding: const EdgeInsets.only(left: 17),
+                    padding: EdgeInsets.only(left: 17.w),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(title,
                             style: GoogleFonts.montserrat(
-                                fontSize: 14,
+                                fontSize: 12.sp,
                                 fontWeight: FontWeight.w500,
-                                color: blackColor.withOpacity(0.5))),
+                                color: textColor.withOpacity(0.5))),
                         Text(subtitle,
                           overflow: TextOverflow.ellipsis,
-                              style: GoogleFonts.montserrat(
-                                
-                                  fontSize: 16,
+                              style: GoogleFonts.montserrat(  
+                                  fontSize: 13.sp,
                                   fontWeight: FontWeight.w500,
-                                  color: blackColor))
+                                  color: textColor))
                       ],
                     ),
                   )
