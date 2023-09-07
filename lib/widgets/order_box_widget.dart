@@ -4,22 +4,23 @@ import 'package:shreeji_delivery_app/theme/colors.dart';
 import 'package:shreeji_delivery_app/widgets/custom_text_widget.dart';
 
 class OrderBox extends StatelessWidget {
-  const OrderBox({super.key,this.isCompleted});
+  const OrderBox({super.key,this.isCompleted,this.isOrderDetail});
 
   final bool? isCompleted;
+  final bool? isOrderDetail;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-        margin: EdgeInsets.only(top: 10.h,left: 10.w,right: 10.w),
+        // margin: EdgeInsets.only(top: 10.h,left: 10.w,right: 10.w),
         padding: EdgeInsets.only(top: 8.h,bottom: 14.h,left: 8.w,right: 8.w),
-        decoration: const BoxDecoration(
-          color: Colors.white,
+        decoration: BoxDecoration(
+          color: whiteColor,
           boxShadow: [
             BoxShadow(
-              color: Color(0xfffffefd),
-              spreadRadius: 10,
-              blurRadius: 2
+              color: primaryColor.withOpacity(0.2),
+              spreadRadius: 0,
+              blurRadius: 20,
             )
           ]
         ),
@@ -27,14 +28,29 @@ class OrderBox extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Container(
-              margin: EdgeInsets.only(bottom: 14.h),
-              decoration: BoxDecoration(
-                color: primaryColor.withOpacity(0.1),
-                borderRadius: BorderRadius.circular(4.r)
-              ),
-              padding: EdgeInsets.all(6.h),
-              child: const Text('TES00004092023115'),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Container(
+                  margin: EdgeInsets.only(bottom: 14.h),
+                  decoration: BoxDecoration(
+                    color: primaryColor.withOpacity(0.1),
+                    borderRadius: BorderRadius.circular(4.r)
+                  ),
+                  padding: EdgeInsets.all(6.h),
+                  child: CustomText(text: 'TES00004092023115',fontSize: 8.sp,fontWeight: FontWeight.w500,color: textColor)
+                ),
+                isOrderDetail == true ?
+                Container(
+                  margin: EdgeInsets.only(bottom: 14.h),
+                  decoration: BoxDecoration(
+                    color: pendingOrderStatusColor.withOpacity(0.1),
+                    borderRadius: BorderRadius.circular(4.r)
+                  ),
+                  padding: EdgeInsets.all(6.h),
+                  child: CustomText(text: 'Pending',fontSize: 8.sp,fontWeight: FontWeight.w500,color: pendingOrderStatusColor,)
+                ) : const SizedBox(),
+              ],
             ),
             Row(
               children: [

@@ -10,4 +10,8 @@ class LoginScreenController extends GetxController{
   void goToForgotPasswordScreen(){
     Get.toNamed(AppRoutes.forgotPasswordScreen);
   }
+
+  void goToAssignedOrderScreen(){
+    Get.toNamed(AppRoutes.assignedOrderScreen);
+  }
 }

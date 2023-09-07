@@ -6,4 +6,5 @@ class AppRoutes{
   static const assignedOrderScreen = '/assignedOrderScreen';
   static const profileScreen = '/profileScreen';
   static const otpVerificationScreen = '/otpVerificationScreen'; 
+  static const orderDetailsScreen = '/orderDetailsScreen';
 }

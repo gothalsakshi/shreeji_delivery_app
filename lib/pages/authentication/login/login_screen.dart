@@ -58,7 +58,9 @@ class LoginScreen extends StatelessWidget {
                         onTap: loginScreenController.goToForgotPasswordScreen,
                         child: CustomText(text: 'Forgot Password?',fontSize: 12.sp,fontWeight:FontWeight.w500,color: secondaryColor)),
                     ),
-                    const CustomAuthButtonWidget(buttonName: 'Login',)
+                    InkWell(
+                      onTap: loginScreenController.goToAssignedOrderScreen,
+                      child: const CustomAuthButtonWidget(buttonName: 'Login',))
                   ],
                 ),
               ),
@@ -76,7 +78,7 @@ class LoginScreen extends StatelessWidget {
               margin: EdgeInsets.only(top: 24.h),
               height: 150.h,
               width: 200.w,
-              child: Image.asset('assets/images/frame.png',fit: BoxFit.fill,)),
+              child: Image.asset('assets/images/frame.png',fit: BoxFit.fill)),
           )
         ],
       )
