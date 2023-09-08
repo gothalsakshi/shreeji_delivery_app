@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shreeji_delivery_app/pages/authentication/forgot_password/forgot_password_screen_controller.dart';
@@ -21,10 +20,13 @@ class ForgotPasswordScreen extends StatelessWidget {
       backgroundColor: secondaryColor,
       body: Stack(
         children: [
-          SizedBox(
-            height: getHeight(context)*0.8,
-            width: getWidth(context),
-            child: Center(child: SvgPicture.asset('assets/images/background_image.svg',fit: BoxFit.fill))),
+          Align(
+            alignment: Alignment.topCenter,
+            child: SizedBox(
+              height: getHeight(context)*0.8,
+              width: getWidth(context),
+              child: Image.asset('assets/images/background_image.png',fit: BoxFit.fill)),
+          ),
           Align(
             alignment: Alignment.bottomCenter,
             child: Container(
@@ -62,7 +64,7 @@ class ForgotPasswordScreen extends StatelessWidget {
               padding: EdgeInsets.only(left: 24.w,top: 28.h),
               child: InkWell(
                 onTap: goBack,
-                child: CircleAvatar(radius: 11.r,backgroundColor: whiteColor,child: Center(child: Icon(Icons.arrow_back_ios,size: 10.h,)),))
+                child: CircleAvatar(radius: 15.r,backgroundColor: whiteColor,child: Center(child: Icon(Icons.arrow_back_ios,size: 13.h,)),))
             )),
           Align(
             alignment: Alignment.topCenter,

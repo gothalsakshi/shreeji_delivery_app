@@ -33,16 +33,19 @@ appbar(title){
         GestureDetector(
           onTap: goBack,
           child: Align(
-            alignment: Alignment.centerLeft,
+            alignment: Alignment.bottomLeft,
             child: Padding(
-              padding: EdgeInsets.only(left: 20.w),
-              child: Icon(Icons.arrow_back_ios,color: whiteColor,size: 20.h),
+              padding: EdgeInsets.only(left: 20.w,bottom: 18.h),
+              child: Icon(Icons.arrow_back_ios,color: whiteColor,size: 18.h),
             ),
           ),
         ),
         Align(
-          alignment: Alignment.center,
-          child: CustomText(text: title,fontSize: 18.sp,fontWeight: FontWeight.w600,color: whiteColor)
+          alignment: Alignment.bottomCenter,
+          child: Padding(
+            padding: EdgeInsets.only(bottom: 18.h),
+            child: CustomText(text: title,fontSize: 18.sp,fontWeight: FontWeight.w600,color: whiteColor),
+          )
         ),
       ],
     ),));

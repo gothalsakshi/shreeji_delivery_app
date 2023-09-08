@@ -1,7 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pinput/pinput.dart';
@@ -22,13 +21,13 @@ class OtpVerificationScreen extends StatelessWidget {
         backgroundColor: secondaryColor,
         body: Stack(
           children: [
-            SizedBox(
-                height: getHeight(context) * 0.8,
+            Align(
+              alignment: Alignment.topCenter,
+              child: SizedBox(
+                height: getHeight(context)*0.8,
                 width: getWidth(context),
-                child: Center(
-                    child: SvgPicture.asset(
-                        'assets/images/background_image.svg',
-                        fit: BoxFit.fill))),
+                child: Image.asset('assets/images/background_image.png',fit: BoxFit.fill)),
+            ),
             Align(
               alignment: Alignment.bottomCenter,
               child: Container(
@@ -53,12 +52,14 @@ class OtpVerificationScreen extends StatelessWidget {
                                 fontWeight: FontWeight.w600,
                                 color: blackColor)),
                       ),
-                      Text('Enter the OTP sent to your mobile number to verify',
-                          textAlign: TextAlign.center,
-                          style: GoogleFonts.hindMadurai(
-                              fontSize: 12.sp,
-                              fontWeight: FontWeight.w400,
-                              color: const Color(0xff5d5d5c))),
+                      Center(
+                        child: Text('Enter the OTP sent to your mobile number to verify',
+                            textAlign: TextAlign.center,
+                            style: GoogleFonts.hindMadurai(
+                                fontSize: 12.sp,
+                                fontWeight: FontWeight.w400,
+                                color: const Color(0xff5d5d5c))),
+                      ),
                       
                       Padding(
                         padding: EdgeInsets.only(left: 15.w,right: 15.w,top: 25.h),
@@ -132,21 +133,13 @@ class OtpVerificationScreen extends StatelessWidget {
               ),
             ),
             Align(
-                alignment: Alignment.topLeft,
-                child: Padding(
-                    padding: EdgeInsets.only(left: 24.w, top: 28.h),
-                    child: InkWell(
-                      onTap: goBack,
-                      child: CircleAvatar(
-                        radius: 11.r,
-                        backgroundColor: whiteColor,
-                        child: Center(
-                            child: Icon(
-                          Icons.arrow_back_ios,
-                          size: 10.h,
-                        )),
-                      ),
-                    ))),
+            alignment: Alignment.topLeft,
+            child: Padding(
+              padding: EdgeInsets.only(left: 24.w,top: 28.h),
+              child: InkWell(
+                onTap: goBack,
+                child: CircleAvatar(radius: 15.r,backgroundColor: whiteColor,child: Center(child: Icon(Icons.arrow_back_ios,size: 13.h,)),))
+            )),
             Align(
               alignment: Alignment.topCenter,
               child: Container(

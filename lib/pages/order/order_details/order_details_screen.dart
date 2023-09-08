@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
+import 'package:shreeji_delivery_app/pages/order/order_details/order_details_screen_controller.dart';
 import 'package:shreeji_delivery_app/theme/colors.dart';
 import 'package:shreeji_delivery_app/utils/utility.dart';
 import 'package:shreeji_delivery_app/widgets/custom_button_widget.dart';
@@ -12,6 +14,7 @@ class OrderDetailsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final orderDetailsScreenController = Get.find<OrderDetialsScreenController>();
     return Scaffold(
       appBar: appbar('Order Details'),
       body: SingleChildScrollView(
@@ -148,8 +151,23 @@ class OrderDetailsScreen extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: EdgeInsets.only(left: 30.w,right: 30.w,top: 40.h,bottom: 40.h),
-              child: const CustomAuthButtonWidget(buttonName: 'Mark as delivered'),
+              padding: EdgeInsets.only(left: 30.w,right: 30.w,top: 40.h,bottom: 20.h),
+              child: CustomAuthButtonWidget(
+                onTap: orderDetailsScreenController.goToPaymentScreen,
+                buttonName: 'Mark as delivered'),
+            ),
+            InkWell(
+              onTap: orderDetailsScreenController.goToIssueDetailsScreen,
+              child: Container(
+                margin: EdgeInsets.only(left: 30.w,right: 30.w,bottom: 40.h),
+                height: 43.h,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(8), color: whiteColor,
+                    border: Border.all(color: secondaryColor)
+                ),
+                child: Center(
+                    child: CustomText(text: 'Any Issue?',fontSize: 14.sp,fontWeight: FontWeight.w600,color: secondaryColor)),
+              ),
             )
           ],
         ),

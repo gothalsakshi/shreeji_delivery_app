@@ -57,16 +57,18 @@ class CustomTextfield extends StatelessWidget {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.end,
       children: [
+        prefixAsset != null ?
         Container(
             margin: EdgeInsets.only(right: 14.w),
             height: 17.h,
             width: 17.h,
             child: Center(
                 child: SvgPicture.asset(prefixAsset!,
-                    fit: BoxFit.fill))),
+                    fit: BoxFit.fill))) : const SizedBox(),
         Expanded(
           child: SizedBox(
             child: TextFormField(
+              maxLines: maxLines,
               cursorColor: primaryColor,
               obscureText: isPassword,
               decoration: InputDecoration(
@@ -75,10 +77,10 @@ class CustomTextfield extends StatelessWidget {
                   prefixIconConstraints: BoxConstraints(),
                   suffixIconConstraints: BoxConstraints(),
                   hintText: hintText,
-                  enabledBorder: const UnderlineInputBorder(
-                      borderSide: BorderSide(color: primaryColor)),
-                  focusedBorder: const UnderlineInputBorder(
-                      borderSide: BorderSide(color: primaryColor)),
+                  enabledBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(color: textColor.withOpacity(0.2))),
+                  focusedBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(color:  textColor.withOpacity(0.2))),
                   isDense: true,
                   errorStyle: GoogleFonts.montserrat(
                       fontSize: 12.sp,

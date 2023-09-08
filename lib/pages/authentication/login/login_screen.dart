@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:shreeji_delivery_app/pages/authentication/login/login_screen_controller.dart';
 import 'package:shreeji_delivery_app/theme/colors.dart';
@@ -20,15 +19,18 @@ class LoginScreen extends StatelessWidget {
       backgroundColor: secondaryColor,
       body: Stack(
         children: [
-          SizedBox(
-            height: getHeight(context)*0.8,
-            width: getWidth(context),
-            child: Center(child: SvgPicture.asset('assets/images/background_image.svg',fit: BoxFit.fill))),
+          Align(
+            alignment: Alignment.topCenter,
+            child: SizedBox(
+              height: getHeight(context)*0.8,
+              width: getWidth(context),
+              child: Image.asset('assets/images/background_image.png',fit: BoxFit.fill)),
+          ),
           Align(
             alignment: Alignment.bottomCenter,
             child: Container(
               margin: EdgeInsets.only(left: 20.w,right: 20.w),
-              height: getHeight(context) * 0.7,
+              height: getHeight(context) * 0.73,
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.only(topLeft: Radius.circular(38.r),topRight: Radius.circular(7.r))
@@ -39,11 +41,11 @@ class LoginScreen extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
                     Padding(
-                      padding: EdgeInsets.only(top: 30.h,bottom: 18.h),
+                      padding: EdgeInsets.only(top: 30.h,bottom: 30.h),
                       child: Center(child: CustomText(text: 'Login',fontSize: 17.sp,fontWeight: FontWeight.w600,color: blackColor)),
                     ),
                     Padding(
-                      padding: EdgeInsets.only(bottom: 18.h),
+                      padding: EdgeInsets.only(bottom: 25.h),
                       child: CustomTextfield(prefixAsset: 'assets/icons/phone_icon.svg',hintText: 'Enter your Mobile number',prefixIcon: CustomText(text: ' +91  |  ',fontSize: 12.sp,fontWeight: FontWeight.w600,color: textColor.withOpacity(0.5))),
                     ),
                     Obx(() => CustomTextfield(
@@ -53,7 +55,7 @@ class LoginScreen extends StatelessWidget {
                       child: loginScreenController.showPassword.value ? Icon(Icons.visibility_off_outlined,color: blackColor,size: 17.h,) : Icon(Icons.visibility_outlined,color: blackColor,size: 17.h),
                     ))),
                     Padding(
-                      padding: EdgeInsets.only(top: 18.h,bottom: 40.h),
+                      padding: EdgeInsets.only(top: 22.h,bottom: 40.h),
                       child: InkWell(
                         onTap: loginScreenController.goToForgotPasswordScreen,
                         child: CustomText(text: 'Forgot Password?',fontSize: 12.sp,fontWeight:FontWeight.w500,color: secondaryColor)),
@@ -70,7 +72,7 @@ class LoginScreen extends StatelessWidget {
             alignment: Alignment.bottomRight,
             child: Padding(
               padding: EdgeInsets.only(bottom: 17.h,right: 35.w),
-              child: const CustomText(text: 'Skip'),
+              child: CustomText(text: 'Skip',decoration: TextDecoration.underline,fontSize: 11.sp,fontWeight: FontWeight.w400,color: blackColor),
             )),
           Align(
             alignment: Alignment.topCenter,

@@ -12,8 +12,12 @@ import 'package:shreeji_delivery_app/pages/order/assigned_order/assigned_order_s
 import 'package:shreeji_delivery_app/pages/order/assigned_order/assigned_order_screen_binding.dart';
 import 'package:shreeji_delivery_app/pages/order/completed_order/completed_order_screen.dart';
 import 'package:shreeji_delivery_app/pages/order/completed_order/completed_order_screen_binding.dart';
+import 'package:shreeji_delivery_app/pages/order/issue_details/issue_details_screen.dart';
+import 'package:shreeji_delivery_app/pages/order/issue_details/issue_details_screen_binding.dart';
 import 'package:shreeji_delivery_app/pages/order/order_details/order_details_screen.dart';
 import 'package:shreeji_delivery_app/pages/order/order_details/order_details_screen_binding.dart';
+import 'package:shreeji_delivery_app/pages/order/payment/payment_screen.dart';
+import 'package:shreeji_delivery_app/pages/order/payment/payment_screen_binding.dart';
 import 'package:shreeji_delivery_app/pages/profile/profile_screen.dart';
 import 'package:shreeji_delivery_app/pages/profile/profile_screen_binding.dart';
 import 'package:shreeji_delivery_app/routes/app_route.dart';
@@ -66,6 +70,18 @@ class AppPages {
       name: AppRoutes.orderDetailsScreen,
       page: () => const OrderDetailsScreen(),
       binding: OrderDetailsScreenBinding(),
+      transition: Transition.rightToLeft,
+    ),
+    GetPage(
+      name: AppRoutes.paymentScreen,
+      page: () => const PaymentScreen(),
+      binding: PaymentScreenBinding(),
+      transition: Transition.rightToLeft,
+    ),
+    GetPage(
+      name: AppRoutes.issueDetailsScreen,
+      page: () => const IssueDetailsScreen(),
+      binding: IssueDetailsScreenBinding(),
       transition: Transition.rightToLeft,
     )
   ];

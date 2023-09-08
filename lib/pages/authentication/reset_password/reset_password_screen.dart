@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shreeji_delivery_app/pages/authentication/reset_password/reset_password_screen_controller.dart';
 import 'package:shreeji_delivery_app/theme/colors.dart';
@@ -22,10 +20,13 @@ class ResetPasswordScreen extends StatelessWidget {
       backgroundColor: secondaryColor,
       body: Stack(
         children: [
-          SizedBox(
-            height: getHeight(context)*0.8,
-            width: getWidth(context),
-            child: Center(child: SvgPicture.asset('assets/images/background_image.svg',fit: BoxFit.fill))),
+          Align(
+            alignment: Alignment.topCenter,
+            child: SizedBox(
+              height: getHeight(context)*0.8,
+              width: getWidth(context),
+              child: Image.asset('assets/images/background_image.png',fit: BoxFit.fill)),
+          ),
           Align(
             alignment: Alignment.bottomCenter,
             child: Container(
@@ -44,9 +45,11 @@ class ResetPasswordScreen extends StatelessWidget {
                       padding: EdgeInsets.only(top: 30.h,bottom: 8.h),
                       child: Center(child: CustomText(text: 'Reset Password',fontSize: 17.sp,fontWeight: FontWeight.w600,color: blackColor)),
                     ),
-                    Padding(
-                      padding: EdgeInsets.only(bottom: 25.h),
-                      child: Center(child: Text('Enter a new and strong password',textAlign: TextAlign.center,style: GoogleFonts.hindMadurai(fontSize: 12.sp,fontWeight: FontWeight.w400,color: const Color(0xff5d5d5c)),)),
+                    Center(
+                      child: Padding(
+                        padding: EdgeInsets.only(bottom: 25.h),
+                        child: Text('Enter a new and strong password',textAlign: TextAlign.center,style: GoogleFonts.hindMadurai(fontSize: 12.sp,fontWeight: FontWeight.w400,color: const Color(0xff5d5d5c)),),
+                      ),
                     ),
                     Obx(() => CustomTextfield(prefixAsset: 'assets/icons/unlock_icon.svg',hintText: 'Enter new password',
                     suffixIcon: InkWell(
@@ -73,7 +76,7 @@ class ResetPasswordScreen extends StatelessWidget {
               padding: EdgeInsets.only(left: 24.w,top: 28.h),
               child: InkWell(
                 onTap: goBack,
-                child: CircleAvatar(radius: 11.r,backgroundColor: whiteColor,child: Center(child: Icon(Icons.arrow_back_ios,size: 10.h,)),))
+                child: CircleAvatar(radius: 15.r,backgroundColor: whiteColor,child: Center(child: Icon(Icons.arrow_back_ios,size: 13.h,)),))
             )),
           Align(
             alignment: Alignment.topCenter,

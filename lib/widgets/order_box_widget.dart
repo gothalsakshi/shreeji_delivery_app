@@ -38,7 +38,7 @@ class OrderBox extends StatelessWidget {
                     borderRadius: BorderRadius.circular(4.r)
                   ),
                   padding: EdgeInsets.all(6.h),
-                  child: CustomText(text: 'TES00004092023115',fontSize: 8.sp,fontWeight: FontWeight.w500,color: textColor)
+                  child: CustomText(text: 'TES00004092023115',fontSize: 10.sp,fontWeight: FontWeight.w500,color: textColor)
                 ),
                 isOrderDetail == true ?
                 Container(
@@ -48,7 +48,7 @@ class OrderBox extends StatelessWidget {
                     borderRadius: BorderRadius.circular(4.r)
                   ),
                   padding: EdgeInsets.all(6.h),
-                  child: CustomText(text: 'Pending',fontSize: 8.sp,fontWeight: FontWeight.w500,color: pendingOrderStatusColor,)
+                  child: CustomText(text: 'Pending',fontSize: 10.sp,fontWeight: FontWeight.w500,color: pendingOrderStatusColor,)
                 ) : const SizedBox(),
               ],
             ),

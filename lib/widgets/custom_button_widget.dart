@@ -17,7 +17,14 @@ class CustomAuthButtonWidget extends StatelessWidget {
       child: Container(
         height: 43.h,
         decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(8), color: primaryColor),
+            borderRadius: BorderRadius.circular(8), color: primaryColor,
+            boxShadow: [
+              BoxShadow(
+                color: Color(0xffebeae6),
+                spreadRadius: 5.r,
+                blurRadius: 7.r
+              )
+            ]),
         child: Center(
             child: CustomText(text: buttonName!,fontSize: 14.sp,fontWeight: FontWeight.w600,color: textColor)),
       ),
