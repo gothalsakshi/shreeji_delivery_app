@@ -5,11 +5,12 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:shreeji_delivery_app/pages/authentication/reset_password/reset_password_screen_controller.dart';
 import 'package:shreeji_delivery_app/theme/colors.dart';
 import 'package:shreeji_delivery_app/utils/utility.dart';
+import 'package:shreeji_delivery_app/utils/validation_mixin.dart';
 import 'package:shreeji_delivery_app/widgets/custom_button_widget.dart';
 import 'package:shreeji_delivery_app/widgets/custom_text_widget.dart';
 import 'package:shreeji_delivery_app/widgets/custom_textfield.dart';
 
-class ResetPasswordScreen extends StatelessWidget {
+class ResetPasswordScreen extends StatelessWidget with ValidationsMixin{
   const ResetPasswordScreen({super.key});
 
   @override
@@ -38,34 +39,45 @@ class ResetPasswordScreen extends StatelessWidget {
               ),
               child:  Padding(
                 padding: EdgeInsets.only(left: 14.w,right: 14.w),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.only(top: 30.h,bottom: 8.h),
-                      child: Center(child: CustomText(text: 'Reset Password',fontSize: 17.sp,fontWeight: FontWeight.w600,color: blackColor)),
-                    ),
-                    Center(
-                      child: Padding(
-                        padding: EdgeInsets.only(bottom: 25.h),
-                        child: Text('Enter a new and strong password',textAlign: TextAlign.center,style: GoogleFonts.hindMadurai(fontSize: 12.sp,fontWeight: FontWeight.w400,color: const Color(0xff5d5d5c)),),
+                child: Form(
+                  key: resetPasswordScreenController.formKey,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.only(top: 30.h,bottom: 8.h),
+                        child: Center(child: CustomText(text: 'Reset Password',fontSize: 17.sp,fontWeight: FontWeight.w600,color: blackColor)),
                       ),
-                    ),
-                    Obx(() => CustomTextfield(prefixAsset: 'assets/icons/unlock_icon.svg',hintText: 'Enter new password',
-                    suffixIcon: InkWell(
-                      onTap: resetPasswordScreenController.hideNewPassword,
-                      child: resetPasswordScreenController.showNewPassword.value ? Icon(Icons.visibility_off_outlined,color: blackColor,size: 17.h,) : Icon(Icons.visibility_outlined,color: blackColor,size: 17.h),
-                    ))),
-                    Padding(
-                      padding: EdgeInsets.only(top: 18.h,bottom: 40.h),
-                      child: Obx(() => CustomTextfield(prefixAsset: 'assets/icons/password_icon.svg',hintText: 'Confirm new password',
+                      Center(
+                        child: Padding(
+                          padding: EdgeInsets.only(bottom: 25.h),
+                          child: Text('Enter a new and strong password',textAlign: TextAlign.center,style: GoogleFonts.hindMadurai(fontSize: 12.sp,fontWeight: FontWeight.w400,color: const Color(0xff5d5d5c)),),
+                        ),
+                      ),
+                      Obx(() => CustomTextfield(
+                        validator: validatedPassword,
+                        maxLines: 1,
+                        isPassword: resetPasswordScreenController.showNewPassword.value,
+                        prefixAsset: 'assets/icons/unlock_icon.svg',hintText: 'Enter new password',
                       suffixIcon: InkWell(
-                      onTap: resetPasswordScreenController.hideConfirmPassword,
-                      child: resetPasswordScreenController.showConfirmPassword.value ? Icon(Icons.visibility_off_outlined,color: blackColor,size: 17.h,) : Icon(Icons.visibility_outlined,color: blackColor,size: 17.h),
-                    )))
-                    ),
-                    const CustomAuthButtonWidget(buttonName: 'Reset',)
-                  ],
+                        onTap: resetPasswordScreenController.hideNewPassword,
+                        child: resetPasswordScreenController.showNewPassword.value ? Icon(Icons.visibility_off_outlined,color: blackColor,size: 17.h,) : Icon(Icons.visibility_outlined,color: blackColor,size: 17.h),
+                      ))),
+                      Padding(
+                        padding: EdgeInsets.only(top: 18.h,bottom: 40.h),
+                        child: Obx(() => CustomTextfield(
+                        validator: validatedPassword,  
+                        maxLines: 1,
+                        isPassword: resetPasswordScreenController.showConfirmPassword.value,
+                        prefixAsset: 'assets/icons/password_icon.svg',hintText: 'Confirm new password',
+                        suffixIcon: InkWell(
+                        onTap: resetPasswordScreenController.hideConfirmPassword,
+                        child: resetPasswordScreenController.showConfirmPassword.value ? Icon(Icons.visibility_off_outlined,color: blackColor,size: 17.h,) : Icon(Icons.visibility_outlined,color: blackColor,size: 17.h),
+                      )))
+                      ),
+                      CustomAuthButtonWidget(onTap: resetPasswordScreenController.validateResetPassword,buttonName: 'Reset',)
+                    ],
+                  ),
                 ),
               ),
             ),

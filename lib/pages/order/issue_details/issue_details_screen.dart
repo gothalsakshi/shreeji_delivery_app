@@ -41,7 +41,7 @@ class IssueDetailsScreen extends StatelessWidget {
                     CustomText(text: 'Issue Type',fontSize: 13.sp,color: textColor,fontWeight: FontWeight.w500),
                     Padding(
                       padding: EdgeInsets.only(top: 14.h,bottom: 5.h),
-                      child: Divider(color: textColor.withOpacity(0.3),height: 1.h),
+                      child: Divider(color: textColor.withOpacity(0.2),height: 1.h),
                     ),
                     // const CustomTextfield(hintText: 'Type your remarks here...',),
                     Obx(() => DropdownButton(
@@ -83,7 +83,7 @@ class IssueDetailsScreen extends StatelessWidget {
                     CustomText(text: 'Remark',fontSize: 13.sp,color: textColor,fontWeight: FontWeight.w500),
                     Padding(
                       padding: EdgeInsets.only(top: 14.h,bottom: 14.h),
-                      child: Divider(color: textColor.withOpacity(0.3),height: 1.h),
+                      child: Divider(color: textColor.withOpacity(0.2),height: 1.h),
                     ),
                     const CustomTextfield(hintText: 'Type your remarks here...',maxLines: 4,)
                   ],
@@ -109,7 +109,7 @@ class IssueDetailsScreen extends StatelessWidget {
                   CustomText(text: 'Upload Attachment (if any) ',fontSize: 13.sp,color: textColor,fontWeight: FontWeight.w500),
                   Padding(
                     padding: EdgeInsets.only(top: 14.h,bottom: 14.h),
-                    child: Divider(color: textColor.withOpacity(0.3),height: 1.h),
+                    child: Divider(color: textColor.withOpacity(0.2),height: 1.h),
                   ),
                   DottedBorder(
                     color: secondaryColor,

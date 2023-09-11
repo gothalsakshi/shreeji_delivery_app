@@ -36,24 +36,36 @@ class CommonDrawer extends StatelessWidget {
               child: Image.asset('assets/images/frame.png',fit: BoxFit.fill)),
             InkWell(
               onTap: (){
-                Get.toNamed(AppRoutes.assignedOrderScreen);
+                if(Get.currentRoute == AppRoutes.assignedOrderScreen){
+                  goBack();
+                }else{
+                  Get.offNamed(AppRoutes.assignedOrderScreen);
+                }
+                
               },
               child: drawerOption('Assigned Orders','assets/icons/assigned_order_icon.svg',false)),
             gradientDivider(context),
             InkWell(
               onTap: (){
-                Get.toNamed(AppRoutes.completedOrderScreen);
+                if(Get.currentRoute == AppRoutes.completedOrderScreen){
+                  goBack();
+                }else{
+                  Get.offNamed(AppRoutes.completedOrderScreen);
+                }
+                
               },
               child: drawerOption('Completed Orders','assets/icons/completed_order_icon.svg',false)),
             gradientDivider(context),
             InkWell(
               onTap: (){
+                goBack();
                 Get.toNamed(AppRoutes.profileScreen);
               },
               child: drawerOption('My Profile','assets/icons/profile_icon.svg',false)),
             gradientDivider(context),
             InkWell(
               onTap: (){
+                goBack();
                 showAlertDialog(context);
               },
               child: drawerOption('Logout','assets/icons/logout_icon.svg',true)),

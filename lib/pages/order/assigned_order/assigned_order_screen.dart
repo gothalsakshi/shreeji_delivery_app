@@ -58,7 +58,7 @@ class AssignedOrderScreen extends StatelessWidget {
                                 ],
                               ),
                             ),
-                            Divider(color: textColor.withOpacity(0.3)),
+                            Divider(color: textColor.withOpacity(0.2)),
                             Expanded(
                               child: Container(
                                 color: whiteColor,

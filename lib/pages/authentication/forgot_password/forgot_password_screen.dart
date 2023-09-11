@@ -5,11 +5,12 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:shreeji_delivery_app/pages/authentication/forgot_password/forgot_password_screen_controller.dart';
 import 'package:shreeji_delivery_app/theme/colors.dart';
 import 'package:shreeji_delivery_app/utils/utility.dart';
+import 'package:shreeji_delivery_app/utils/validation_mixin.dart';
 import 'package:shreeji_delivery_app/widgets/custom_button_widget.dart';
 import 'package:shreeji_delivery_app/widgets/custom_text_widget.dart';
 import 'package:shreeji_delivery_app/widgets/custom_textfield.dart';
 
-class ForgotPasswordScreen extends StatelessWidget {
+class ForgotPasswordScreen extends StatelessWidget with ValidationsMixin{
   const ForgotPasswordScreen({super.key});
 
   @override
@@ -38,22 +39,28 @@ class ForgotPasswordScreen extends StatelessWidget {
               ),
               child:  Padding(
                 padding: EdgeInsets.only(left: 14.w,right: 14.w),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.only(top: 30.h,bottom: 8.h),
-                      child: Center(child: CustomText(text: 'Forgot Password',fontSize: 17.sp,fontWeight: FontWeight.w600,color: blackColor)),
-                    ),
-                    Text('Enter your registered mobile number to receive an OTP',textAlign: TextAlign.center,style: GoogleFonts.hindMadurai(fontSize: 12.sp,fontWeight: FontWeight.w400,color: const Color(0xff5d5d5c))),
-                    Padding(
-                      padding: EdgeInsets.only(bottom: 35.h,top: 20.h),
-                      child: CustomTextfield(prefixAsset: 'assets/icons/phone_icon.svg',hintText: 'Enter your Mobile number',prefixIcon: CustomText(text: ' +91  |  ',fontSize: 12.sp,fontWeight: FontWeight.w600,color: textColor.withOpacity(0.5))),
-                    ),
-                    InkWell(
-                      onTap: forgotPasswordScreenController.goToOtpVerificationScreen,
-                      child: const CustomAuthButtonWidget(buttonName: 'Send',))
-                  ],
+                child: Form(
+                  key: forgotPasswordScreenController.formKey,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.only(top: 30.h,bottom: 8.h),
+                        child: Center(child: CustomText(text: 'Forgot Password',fontSize: 17.sp,fontWeight: FontWeight.w600,color: blackColor)),
+                      ),
+                      Text('Enter your registered mobile number to receive an OTP',textAlign: TextAlign.center,style: GoogleFonts.hindMadurai(fontSize: 12.sp,fontWeight: FontWeight.w400,color: const Color(0xff5d5d5c))),
+                      Padding(
+                        padding: EdgeInsets.only(bottom: 35.h,top: 20.h),
+                        child: CustomTextfield(
+                          validator: validatedPhoneNumber,
+                          textInputType: TextInputType.number,
+                          prefixAsset: 'assets/icons/phone_icon.svg',hintText: 'Enter your Mobile number',prefixIcon: CustomText(text: ' +91  |  ',fontSize: 12.sp,fontWeight: FontWeight.w600,color: textColor.withOpacity(0.5))),
+                      ),
+                      InkWell(
+                        onTap: forgotPasswordScreenController.goToOtpVerificationScreen,
+                        child: const CustomAuthButtonWidget(buttonName: 'Send',))
+                    ],
+                  ),
                 ),
               ),
             ),

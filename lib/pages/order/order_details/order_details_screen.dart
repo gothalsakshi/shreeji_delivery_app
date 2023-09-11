@@ -8,6 +8,8 @@ import 'package:shreeji_delivery_app/utils/utility.dart';
 import 'package:shreeji_delivery_app/widgets/custom_button_widget.dart';
 import 'package:shreeji_delivery_app/widgets/custom_text_widget.dart';
 import 'package:shreeji_delivery_app/widgets/order_box_widget.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 class OrderDetailsScreen extends StatelessWidget {
   const OrderDetailsScreen({super.key});
@@ -36,7 +38,7 @@ class OrderDetailsScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   CustomText(text: 'Customer Information',fontSize: 12.sp,fontWeight: FontWeight.w600,color: textColor),
-                  Divider(color: textColor.withOpacity(0.3)),
+                  Divider(color: textColor.withOpacity(0.2)),
                   addressTile('Customer Name :', ' Raheeg'),
                   addressTile('Mobile Number : ', '09717312876'),
                   addressTile('Address : ', 'Akshya Nagar 1st Block 1st Cross,'),
@@ -49,19 +51,30 @@ class OrderDetailsScreen extends StatelessWidget {
                       children: [
                          Padding(
                            padding: EdgeInsets.only(right: 20.w),
+                           child: InkWell(
+                            onTap: ()async{
+                              await launchUrl(Uri(scheme: 'tel',path: '0000000000'));
+                            },
+                             child: CircleAvatar(
+                              backgroundColor: primaryColor,
+                              radius: 15.r,
+                              child: SizedBox(
+                                height: 17.h,width: 17.h,
+                                child: SvgPicture.asset('assets/icons/phone_icon.svg'))),
+                           ),
+                         ),
+                         InkWell(
+                          onTap: ()async{
+                            await launchUrlString('https://www.google.com/maps/search/?l&query=30.625168,131.75150000');
+                          
+                          },
                            child: CircleAvatar(
                             backgroundColor: primaryColor,
                             radius: 15.r,
                             child: SizedBox(
                               height: 17.h,width: 17.h,
-                              child: SvgPicture.asset('assets/icons/phone_icon.svg'))),
-                         ),
-                         CircleAvatar(
-                          backgroundColor: primaryColor,
-                          radius: 15.r,
-                          child: SizedBox(
-                            height: 17.h,width: 17.h,
-                            child: SvgPicture.asset('assets/icons/address_icon.svg')))
+                              child: SvgPicture.asset('assets/icons/address_icon.svg'))),
+                         )
                       ],
                     ),
                   )
@@ -84,7 +97,7 @@ class OrderDetailsScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   CustomText(text: 'Customer Information',fontSize: 12.sp,fontWeight: FontWeight.w600,color: textColor),
-                  Divider(color: textColor.withOpacity(0.3)),
+                  Divider(color: textColor.withOpacity(0.2)),
                   ListView.builder(
                     physics: const NeverScrollableScrollPhysics(),
                     shrinkWrap: true,
@@ -119,7 +132,7 @@ class OrderDetailsScreen extends StatelessWidget {
                           CustomText(text: 'x 2',fontSize: 11.sp,fontWeight: FontWeight.w500,color: textColor),
                         ],
                         ),
-                        index != 1 ? Divider(color: textColor.withOpacity(0.3)) : const SizedBox()
+                        index != 1 ? Divider(color: textColor.withOpacity(0.2)) : const SizedBox()
                       ],
                     );
                   })
@@ -143,7 +156,7 @@ class OrderDetailsScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   CustomText(text: 'Store Information',fontSize: 12.sp,fontWeight: FontWeight.w600,color: textColor),
-                  Divider(color: textColor.withOpacity(0.3)),
+                  Divider(color: textColor.withOpacity(0.2)),
                   addressTile('Store Name :', ' Shreeji Foods'),
                   addressTile('Store Number : ', '09717312876'),
                   addressTile('Address : ', 'Akshya Nagar 1st Block 1st Cross,'),

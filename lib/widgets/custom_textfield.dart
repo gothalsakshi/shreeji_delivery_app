@@ -55,11 +55,11 @@ class CustomTextfield extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-      crossAxisAlignment: CrossAxisAlignment.end,
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         prefixAsset != null ?
         Container(
-            margin: EdgeInsets.only(right: 14.w),
+            margin: EdgeInsets.only(right: 14.w,top: 5.h),
             height: 17.h,
             width: 17.h,
             child: Center(
@@ -68,6 +68,8 @@ class CustomTextfield extends StatelessWidget {
         Expanded(
           child: SizedBox(
             child: TextFormField(
+              keyboardType: textInputType,
+              validator: validator,
               maxLines: maxLines,
               cursorColor: primaryColor,
               obscureText: isPassword,
@@ -85,7 +87,8 @@ class CustomTextfield extends StatelessWidget {
                   errorStyle: GoogleFonts.montserrat(
                       fontSize: 12.sp,
                       fontWeight: FontWeight.w600,
-                      color: textColor.withOpacity(0.5)),
+                      // color: textColor.withOpacity(0.5),
+                      ),
                   labelStyle: GoogleFonts.montserrat(
                       fontSize: 12.sp,
                       fontWeight: FontWeight.w600,
