@@ -32,9 +32,9 @@ class ResetPasswordScreen extends StatelessWidget with ValidationsMixin{
             alignment: Alignment.bottomCenter,
             child: Container(
               margin: EdgeInsets.only(left: 20.w,right: 20.w),
-              height: getHeight(context) * 0.7,
+              height: getHeight(context) * 0.72,
               decoration: BoxDecoration(
-                color: Colors.white,
+                color: whiteColor,
                 borderRadius: BorderRadius.only(topLeft: Radius.circular(38.r),topRight: Radius.circular(7.r))
               ),
               child:  Padding(
@@ -86,14 +86,27 @@ class ResetPasswordScreen extends StatelessWidget with ValidationsMixin{
             alignment: Alignment.topLeft,
             child: Padding(
               padding: EdgeInsets.only(left: 24.w,top: 28.h),
-              child: InkWell(
-                onTap: goBack,
-                child: CircleAvatar(radius: 15.r,backgroundColor: whiteColor,child: Center(child: Icon(Icons.arrow_back_ios,size: 13.h,)),))
+              child: SizedBox(
+                height: 30.h,width: 30.h,
+                child: FloatingActionButton(onPressed: goBack,
+                backgroundColor: whiteColor,
+                elevation: 0.1,
+                child: Icon(Icons.arrow_back_ios,size: 11.h,color: secondaryColor)),
+              )
+              // InkWell(
+              //   onTap: goBack,
+              //   child: Container(
+              //     decoration: BoxDecoration(
+              //       borderRadius: BorderRadius.circular(50.r),
+              //       color: Colors.amberAccent
+              //     ),
+              //     padding: EdgeInsets.all(8.h),
+              //   child: Icon(Icons.arrow_back_ios,size: 13.h,color: secondaryColor),))
             )),
           Align(
             alignment: Alignment.topCenter,
             child: Container(
-              margin: EdgeInsets.only(top: 24.h),
+              margin: EdgeInsets.only(top: 30.h),
               height: 150.h,
               width: 200.w,
               child: Image.asset('assets/images/frame.png',fit: BoxFit.fill,)),

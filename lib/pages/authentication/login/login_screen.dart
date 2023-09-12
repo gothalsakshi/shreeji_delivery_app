@@ -32,9 +32,9 @@ class LoginScreen extends StatelessWidget with ValidationsMixin {
             alignment: Alignment.bottomCenter,
             child: Container(
               margin: EdgeInsets.only(left: 20.w,right: 20.w),
-              height: getHeight(context) * 0.73,
+              height: getHeight(context) * 0.72,
               decoration: BoxDecoration(
-                color: Colors.white,
+                color: whiteColor,
                 borderRadius: BorderRadius.only(topLeft: Radius.circular(38.r),topRight: Radius.circular(7.r))
               ),
               child:  Padding(
@@ -89,7 +89,7 @@ class LoginScreen extends StatelessWidget with ValidationsMixin {
           Align(
             alignment: Alignment.topCenter,
             child: Container(
-              margin: EdgeInsets.only(top: 24.h),
+              margin: EdgeInsets.only(top: 30.h),
               height: 150.h,
               width: 200.w,
               child: Image.asset('assets/images/frame.png',fit: BoxFit.fill)),

@@ -20,10 +20,18 @@ import 'package:shreeji_delivery_app/pages/order/payment/payment_screen.dart';
 import 'package:shreeji_delivery_app/pages/order/payment/payment_screen_binding.dart';
 import 'package:shreeji_delivery_app/pages/profile/profile_screen.dart';
 import 'package:shreeji_delivery_app/pages/profile/profile_screen_binding.dart';
+import 'package:shreeji_delivery_app/pages/splash_screen/splash_screen.dart';
+import 'package:shreeji_delivery_app/pages/splash_screen/splash_screen_binding.dart';
 import 'package:shreeji_delivery_app/routes/app_route.dart';
 
 class AppPages {
   static final List<GetPage> getPages = [
+    GetPage(
+      name: AppRoutes.splashScreen,
+      page: () => const SplashScreen(),
+      binding: SplashScreenBinding(),
+      transition: Transition.rightToLeft,
+    ),
     GetPage(
       name: AppRoutes.loginScreen,
       page: () => const LoginScreen(),

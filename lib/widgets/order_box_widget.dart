@@ -79,7 +79,7 @@ class OrderBox extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 CustomText(text : 'Payment Mode : Pay in Cash',fontSize: 11.sp,fontWeight: FontWeight.w500,color: textColor),
-                CustomText(text : 'Total : ₹ 1500',fontSize: 11.sp,fontWeight: FontWeight.w600,color: secondaryColor)
+                CustomText(text : 'Total : ₹ 1500',fontSize: 11.sp,fontWeight: FontWeight.w700,color: secondaryColor)
               ],
             ),
           ],

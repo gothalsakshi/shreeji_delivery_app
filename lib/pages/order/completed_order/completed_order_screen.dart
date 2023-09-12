@@ -19,8 +19,7 @@ class CompletedOrderScreen extends StatelessWidget {
     return  Scaffold(
       appBar: AppBar(
         centerTitle: true,
-
-        title: CustomText(text:'Completed orders',fontSize: 18.sp,fontWeight: FontWeight.w600,color: whiteColor),
+        title: CustomText(text:'Completed Orders',fontSize: 18.sp,fontWeight: FontWeight.w600,color: whiteColor),
         flexibleSpace: Container(
           decoration: const BoxDecoration(
             gradient: LinearGradient(

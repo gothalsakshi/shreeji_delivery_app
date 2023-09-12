@@ -110,7 +110,9 @@ class OrderDetailsScreen extends StatelessWidget {
                         children: [
                           Row(
                             children: [
-                              Image.asset('assets/images/image1.png'),
+                              SizedBox(
+                                height: 60.h,width: 60.h,
+                                child: Image.asset('assets/images/image1.png')),
                               Padding(
                                 padding: EdgeInsets.only(left: 10.w),
                                 child: Column(

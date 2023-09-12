@@ -132,8 +132,7 @@ class AssignedOrderScreen extends StatelessWidget {
       ),
       appBar: AppBar(
         centerTitle: true,
-
-        title: Text('Assigned orders'),
+        title: const Text('Assigned Orders'),
         flexibleSpace: Container(
           decoration: const BoxDecoration(
             gradient: LinearGradient(
