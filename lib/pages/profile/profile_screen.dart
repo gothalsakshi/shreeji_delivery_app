@@ -34,7 +34,7 @@ class ProfileScreen extends StatelessWidget {
                   profileOption('Name', 'Samar', 'assets/icons/profile_icon.svg'),
                   profileOption('Email', 'Samar@gmail.com', 'assets/icons/email_icon.svg'),
                   profileOption('Phone', '+91 123456789', 'assets/icons/phone_icon.svg'),
-                  profileOption('Address', 'Akshya Nagar 1st Block 1st Cross', 'assets/icons/address_icon.svg'),
+                  profileOption('Address', 'Akshya Nagar 1st Block 1st Cross, Rammurthy nagar, Bangalore-560016', 'assets/icons/address_icon.svg'),
                   profileOption('Mapped Area', 'Saki Naka, Marol', 'assets/icons/location_icon.svg'),
                 ],
               ),
@@ -49,6 +49,7 @@ class ProfileScreen extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.only(bottom: 20.h),
       child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   CircleAvatar(
                       backgroundColor: primaryColor,
@@ -56,23 +57,26 @@ class ProfileScreen extends StatelessWidget {
                       child: SizedBox(
                         height: 17.h,width: 17.h,
                         child: SvgPicture.asset(assest))),
-                  Padding(
-                    padding: EdgeInsets.only(left: 17.w),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(title,
-                            style: GoogleFonts.montserrat(
-                                fontSize: 12.sp,
-                                fontWeight: FontWeight.w500,
-                                color: textColor.withOpacity(0.5))),
-                        Text(subtitle,
-                          overflow: TextOverflow.ellipsis,
-                              style: GoogleFonts.montserrat(  
-                                  fontSize: 13.sp,
+                  Expanded(
+                    child: Container(
+                      padding: EdgeInsets.only(left: 17.w),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(title,
+                              style: GoogleFonts.montserrat(
+                                  fontSize: 14.sp,
                                   fontWeight: FontWeight.w500,
-                                  color: textColor))
-                      ],
+                                  color: textColor.withOpacity(0.5))),
+                          Text(subtitle,
+                          // maxLines: 3,
+                            overflow: TextOverflow.clip,
+                                style: GoogleFonts.montserrat(  
+                                    fontSize: 15.sp,
+                                    fontWeight: FontWeight.w500,
+                                    color: textColor))
+                        ],
+                      ),
                     ),
                   )
                 ],

@@ -37,11 +37,11 @@ class OrderDetailsScreen extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  CustomText(text: 'Customer Information',fontSize: 12.sp,fontWeight: FontWeight.w600,color: textColor),
+                  CustomText(text: 'Customer Information',fontSize: 14.sp,fontWeight: FontWeight.w600,color: textColor),
                   Divider(color: textColor.withOpacity(0.2)),
                   addressTile('Customer Name :', ' Raheeg'),
                   addressTile('Mobile Number : ', '09717312876'),
-                  addressTile('Address : ', 'Akshya Nagar 1st Block 1st Cross,'),
+                  addressTile('Address : ', 'Akshya Nagar 1st Block 1st Cross, Rammurthy nagar, Bangalore-560016'),
                   addressTile('Landmark : ', 'RD LANE'),
                   addressTile('Area : ', 'RD LANE'),
                   addressTile('City : ', 'Bangalore'),
@@ -96,7 +96,7 @@ class OrderDetailsScreen extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  CustomText(text: 'Customer Information',fontSize: 12.sp,fontWeight: FontWeight.w600,color: textColor),
+                  CustomText(text: 'Customer Information',fontSize: 14.sp,fontWeight: FontWeight.w600,color: textColor),
                   Divider(color: textColor.withOpacity(0.2)),
                   ListView.builder(
                     physics: const NeverScrollableScrollPhysics(),
@@ -118,12 +118,12 @@ class OrderDetailsScreen extends StatelessWidget {
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    CustomText(text: 'Cashew Nuts',fontSize: 13.sp,fontWeight: FontWeight.w600,color: textColor),
-                                    CustomText(text: '1kg',fontSize: 12.sp,fontWeight: FontWeight.w400,color: textColor.withOpacity(0.3)),
+                                    CustomText(text: 'Cashew Nuts',fontSize: 14.sp,fontWeight: FontWeight.w600,color: textColor),
+                                    CustomText(text: '1kg',fontSize: 13.sp,fontWeight: FontWeight.w400,color: textColor.withOpacity(0.3)),
                                     Row(
                                       children: [
-                                        CustomText(text: '₹800',fontSize: 12.sp,fontWeight: FontWeight.w600,color: textColor.withOpacity(0.4),decoration: TextDecoration.lineThrough),
-                                        CustomText(text: '  ₹650',fontSize: 12.sp,fontWeight: FontWeight.w600,color: secondaryColor),
+                                        CustomText(text: '₹800',fontSize: 14.sp,fontWeight: FontWeight.w600,color: textColor.withOpacity(0.4),decoration: TextDecoration.lineThrough),
+                                        CustomText(text: '  ₹650',fontSize: 13.sp,fontWeight: FontWeight.w600,color: secondaryColor),
                                       ],
                                     ),
                                   ],
@@ -131,7 +131,7 @@ class OrderDetailsScreen extends StatelessWidget {
                               )
                             ],
                           ),
-                          CustomText(text: 'x 2',fontSize: 11.sp,fontWeight: FontWeight.w500,color: textColor),
+                          CustomText(text: 'x 2',fontSize: 13.sp,fontWeight: FontWeight.w500,color: textColor),
                         ],
                         ),
                         index != 1 ? Divider(color: textColor.withOpacity(0.2)) : const SizedBox()
@@ -157,11 +157,11 @@ class OrderDetailsScreen extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  CustomText(text: 'Store Information',fontSize: 12.sp,fontWeight: FontWeight.w600,color: textColor),
+                  CustomText(text: 'Store Information',fontSize: 14.sp,fontWeight: FontWeight.w600,color: textColor),
                   Divider(color: textColor.withOpacity(0.2)),
                   addressTile('Store Name :', ' Shreeji Foods'),
                   addressTile('Store Number : ', '09717312876'),
-                  addressTile('Address : ', 'Akshya Nagar 1st Block 1st Cross,'),
+                  addressTile('Address : ', 'Akshya Nagar 1st Block 1st Cross, Rammurthy nagar, Bangalore-560016'),
                 ],
               ),
             ),
@@ -194,9 +194,10 @@ class OrderDetailsScreen extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.only(top: 12.h),
       child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          CustomText(text: title,fontSize: 11.sp,fontWeight: FontWeight.w500,color: textColor),
-          CustomText(text: subtitle,fontSize: 11.sp,fontWeight: FontWeight.w400,color: textColor),
+          CustomText(text: title,fontSize: 13.sp,fontWeight: FontWeight.w500,color: textColor),
+          Expanded(child: CustomText(text: subtitle,fontSize: 13.sp,fontWeight: FontWeight.w400,color: textColor,maxLines: 2,)),
         ],
       ),
     );

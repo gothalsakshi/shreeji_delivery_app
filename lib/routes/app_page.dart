@@ -12,6 +12,8 @@ import 'package:shreeji_delivery_app/pages/order/assigned_order/assigned_order_s
 import 'package:shreeji_delivery_app/pages/order/assigned_order/assigned_order_screen_binding.dart';
 import 'package:shreeji_delivery_app/pages/order/completed_order/completed_order_screen.dart';
 import 'package:shreeji_delivery_app/pages/order/completed_order/completed_order_screen_binding.dart';
+import 'package:shreeji_delivery_app/pages/order/empty_order/empty_order_screen.dart';
+import 'package:shreeji_delivery_app/pages/order/empty_order/empty_order_screen_binding.dart';
 import 'package:shreeji_delivery_app/pages/order/issue_details/issue_details_screen.dart';
 import 'package:shreeji_delivery_app/pages/order/issue_details/issue_details_screen_binding.dart';
 import 'package:shreeji_delivery_app/pages/order/order_details/order_details_screen.dart';
@@ -90,6 +92,12 @@ class AppPages {
       name: AppRoutes.issueDetailsScreen,
       page: () => const IssueDetailsScreen(),
       binding: IssueDetailsScreenBinding(),
+      transition: Transition.rightToLeft,
+    ),
+    GetPage(
+      name: AppRoutes.emptyOrderScreen,
+      page: () => const EmptyOrderScreen(),
+      binding: EmptyOrderScreenBinding(),
       transition: Transition.rightToLeft,
     )
   ];

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:shreeji_delivery_app/pages/authentication/login/login_screen_controller.dart';
-import 'package:shreeji_delivery_app/routes/app_route.dart';
 import 'package:shreeji_delivery_app/theme/colors.dart';
 import 'package:shreeji_delivery_app/utils/utility.dart';
 import 'package:shreeji_delivery_app/utils/validation_mixin.dart';
@@ -53,7 +52,11 @@ class LoginScreen extends StatelessWidget with ValidationsMixin {
                         child: CustomTextfield(
                           textInputType: TextInputType.number,
                           validator: validatedPhoneNumber,
-                          prefixAsset: 'assets/icons/phone_icon.svg',hintText: 'Enter your Mobile number',prefixIcon: CustomText(text: ' +91  |  ',fontSize: 12.sp,fontWeight: FontWeight.w600,color: textColor.withOpacity(0.5))),
+                          contentPadding: EdgeInsets.all(2.h),
+                          prefixAsset: 'assets/icons/phone_icon.svg',hintText: 'Enter your Mobile number',prefixIcon: Padding(
+                            padding: EdgeInsets.only(bottom: 3.h),
+                            child: CustomText(text: ' +91  |  ',fontSize: 13.sp,fontWeight: FontWeight.w600,color: textColor.withOpacity(0.5)),
+                          )),
                       ),
                       Obx(() => CustomTextfield(
                         validator: validatedPassword,
@@ -78,14 +81,14 @@ class LoginScreen extends StatelessWidget with ValidationsMixin {
               ),
             ),
           ),
-          Align(
-            alignment: Alignment.bottomRight,
-            child: Padding(
-              padding: EdgeInsets.only(bottom: 17.h,right: 35.w),
-              child: InkWell(
-                onTap: ()=> Get.offAllNamed(AppRoutes.assignedOrderScreen),
-                child: CustomText(text: 'Skip',decoration: TextDecoration.underline,fontSize: 11.sp,fontWeight: FontWeight.w400,color: blackColor)),
-            )),
+          // Align(
+          //   alignment: Alignment.bottomRight,
+          //   child: Padding(
+          //     padding: EdgeInsets.only(bottom: 17.h,right: 35.w),
+          //     child: InkWell(
+          //       onTap: ()=> Get.offAllNamed(AppRoutes.assignedOrderScreen),
+          //       child: CustomText(text: 'Skip',decoration: TextDecoration.underline,fontSize: 11.sp,fontWeight: FontWeight.w400,color: blackColor)),
+          //   )),
           Align(
             alignment: Alignment.topCenter,
             child: Container(

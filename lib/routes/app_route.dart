@@ -10,4 +10,5 @@ class AppRoutes{
   static const orderDetailsScreen = '/orderDetailsScreen';
   static const paymentScreen = '/paymentScreen';
   static const issueDetailsScreen = '/issueDetailsScreen';
+  static const emptyOrderScreen = '/emptyOrderScreen';
 }

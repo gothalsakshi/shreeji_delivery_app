@@ -13,7 +13,7 @@ class OrderBox extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
         // margin: EdgeInsets.only(top: 10.h,left: 10.w,right: 10.w),
-        padding: EdgeInsets.only(top: 8.h,bottom: 14.h,left: 8.w,right: 8.w),
+        padding: EdgeInsets.only(top: 8.h,bottom: 14.h,right: isOrderDetail == true ? 30.w : 8.w),
         decoration: BoxDecoration(
           color: whiteColor,
           boxShadow: [
@@ -32,7 +32,7 @@ class OrderBox extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Container(
-                  margin: EdgeInsets.only(bottom: 14.h),
+                  margin: EdgeInsets.only(bottom: 14.h,left: isOrderDetail == true ? 24.w : 10.w),
                   decoration: BoxDecoration(
                     color: primaryColor.withOpacity(0.1),
                     borderRadius: BorderRadius.circular(4.r)
@@ -52,35 +52,42 @@ class OrderBox extends StatelessWidget {
                 ) : const SizedBox(),
               ],
             ),
-            Row(
-              children: [
-                CustomText(text: 'Order Date & Time:  ',fontSize: 11.sp,fontWeight: FontWeight.w400,color: textColor),
-                CustomText(text: '05-08-2023  18:13:06',fontSize: 11.sp,fontWeight: FontWeight.w500,color: textColor),
-              ],
+            Padding(
+              padding: EdgeInsets.only(left: isOrderDetail == true ? 30.w : 16.w),
+              child: Row(
+                children: [
+                  CustomText(text: 'Order Date & Time:  ',fontSize: 13.sp,fontWeight: FontWeight.w400,color: textColor),
+                  CustomText(text: '05-08-2023  18:13:06',fontSize: 13.sp,fontWeight: FontWeight.w500,color: textColor),
+                ],
+              ),
             ),
             Padding(
-              padding: const EdgeInsets.only(top: 11,bottom: 11),
+              padding: EdgeInsets.only(top: 11.h,bottom: 11.h,left: isOrderDetail == true ? 30.w : 16.w),
               child: isCompleted == true ?
               Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  CustomText(text: 'Delivery Date & TIme:  ',fontSize: 11.sp,fontWeight: FontWeight.w400,color: textColor),
-                  CustomText(text: '05-08-2023 01:00 pm - 03:00pm',fontSize: 11.sp,fontWeight: FontWeight.w500,color: primaryColor)
+                  CustomText(text: 'Delivery Date & TIme:  ',fontSize: 13.sp,fontWeight: FontWeight.w400,color: textColor),
+                  Expanded(child: CustomText(text: '05-08-2023 01:00 pm - 03:00pm',fontSize: 13.sp,fontWeight: FontWeight.w500,color: textColor,maxLines: 2,))
                 ],
               ) :
               Row(
                 children: [
-                  CustomText(text: 'No of Items in Order:  ',fontSize: 11.sp,fontWeight: FontWeight.w400,color: textColor),
+                  CustomText(text: 'No of Items in Order:  ',fontSize: 13.sp,fontWeight: FontWeight.w400,color: textColor),
                   CustomText(text: '05',fontSize: 11.sp,fontWeight: FontWeight.w500,color: textColor)
                 ],
               ),
 
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                CustomText(text : 'Payment Mode : Pay in Cash',fontSize: 11.sp,fontWeight: FontWeight.w500,color: textColor),
-                CustomText(text : 'Total : ₹ 1500',fontSize: 11.sp,fontWeight: FontWeight.w700,color: secondaryColor)
-              ],
+            Padding(
+              padding: EdgeInsets.only(left: isOrderDetail == true ? 30.w : 16.w),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  CustomText(text : 'Payment Mode : Pay in Cash',fontSize: 13.sp,fontWeight: FontWeight.w500,color: textColor),
+                  CustomText(text : 'Total : ₹ 1500',fontSize: 13.sp,fontWeight: FontWeight.w700,color: secondaryColor)
+                ],
+              ),
             ),
           ],
         ),

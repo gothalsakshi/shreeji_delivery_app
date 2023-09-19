@@ -6,6 +6,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shreeji_delivery_app/pages/order/payment/payment_screen_controller.dart';
+import 'package:shreeji_delivery_app/routes/app_route.dart';
 import 'package:shreeji_delivery_app/theme/colors.dart';
 import 'package:shreeji_delivery_app/utils/utility.dart';
 import 'package:shreeji_delivery_app/widgets/custom_button_widget.dart';
@@ -159,12 +160,14 @@ class PaymentScreen extends StatelessWidget {
                     width: 200.h,
                     child: SvgPicture.asset('assets/images/barcode.svg'),
                   ),
-                  CustomText(text: 'Scan the above QR code for payment',fontSize: 13.sp,fontWeight: FontWeight.w500,color: textColor)
+                  CustomText(text: 'Scan the above QR code for payment',fontSize: 14.sp,fontWeight: FontWeight.w500,color: textColor)
                 ],
               ),
             )),
             
-            Container(
+            Obx(() => paymentScreenController.selectedPayment.value == 1 ?
+            const SizedBox()
+            : Container(
               margin: EdgeInsets.only(bottom: 15.h,left: 20.w,right: 20.w),
               decoration: BoxDecoration(
                 color: whiteColor,
@@ -184,8 +187,8 @@ class PaymentScreen extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      CustomText(text: 'Upload Payment Document',fontSize: 13.sp,color: textColor,fontWeight: FontWeight.w500),
-                      Obx(() => paymentScreenController.list.isNotEmpty ?
+                      CustomText(text: 'Upload Payment Document',fontSize: 15.sp,color: textColor,fontWeight: FontWeight.w500),
+                      paymentScreenController.list.isNotEmpty ?
                       InkWell(
                         onTap: (){
                         showUploadImageDialog(context, paymentScreenController.pickImage, paymentScreenController.takeImage);
@@ -195,7 +198,7 @@ class PaymentScreen extends StatelessWidget {
                           backgroundColor: secondaryColor.withOpacity(0.2),
                           child: Icon(Icons.add,color: secondaryColor,size:18.h),
                         ),
-                      ) : const SizedBox())
+                      ) : const SizedBox()
                     ],
                   ),
                   Padding(
@@ -267,7 +270,7 @@ class PaymentScreen extends StatelessWidget {
                   )
                 ],
               ),
-            ),
+            )),
             
             Container(
               margin: EdgeInsets.only(left: 20.w,right: 20.w,bottom: 15.h),
@@ -286,18 +289,25 @@ class PaymentScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  CustomText(text: 'Remarks',fontSize: 13.sp,color: textColor,fontWeight: FontWeight.w500),
+                  CustomText(text: 'Remarks',fontSize: 14.sp,color: textColor,fontWeight: FontWeight.w500),
                   Padding(
                     padding: EdgeInsets.only(top: 14.h,bottom: 14.h),
                     child: Divider(color: textColor.withOpacity(0.2),height: 1.h),
                   ),
-                  const CustomTextfield(hintText: 'Type your remarks here...',)
+                  const CustomTextfield(hintText: 'Type your remarks here...',maxLines: 4,)
                 ],
               ),
             ),
             Padding(
               padding: EdgeInsets.only(left: 30.w,right: 30.w,top: 35.h,bottom: 40.h),
-              child: const CustomAuthButtonWidget(buttonName: 'Submit'),
+              child: CustomAuthButtonWidget(
+                onTap: (){
+                  Get.toNamed(AppRoutes.emptyOrderScreen);
+                  // goBack();
+                  // ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: CustomText(text: 'Payment done successfully',color: whiteColor),backgroundColor: secondaryColor.withOpacity(0.8)));
+                  // Get.showSnackbar(GetSnackBar(message: 'Payment done successfully',isDismissible: true,));
+                },
+                buttonName: 'Submit'),
             )
           ],
         ),

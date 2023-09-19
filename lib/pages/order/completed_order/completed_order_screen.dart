@@ -8,6 +8,7 @@ import 'package:shreeji_delivery_app/utils/utility.dart';
 import 'package:shreeji_delivery_app/widgets/common_drawer.dart';
 import 'package:shreeji_delivery_app/widgets/custom_button_widget.dart';
 import 'package:shreeji_delivery_app/widgets/custom_text_widget.dart';
+import 'package:shreeji_delivery_app/widgets/custom_textfield.dart';
 import 'package:shreeji_delivery_app/widgets/order_box_widget.dart';
 
 class CompletedOrderScreen extends StatelessWidget {
@@ -44,9 +45,9 @@ class CompletedOrderScreen extends StatelessWidget {
                   builder: (con, setState) {
                     return Align(
                       alignment: Alignment.bottomCenter,
-                      child: Container(
+                      child: Obx(() => Container(
                         clipBehavior: Clip.antiAlias,
-                        height: 280.h,
+                        height: completedOrdersScreenController.isCustomDateSelected.value ? 280.h : 250.h,
                         width: MediaQuery.of(context).size.width,
                         decoration: const BoxDecoration(
                             color: whiteColor,
@@ -75,60 +76,101 @@ class CompletedOrderScreen extends StatelessWidget {
                               child: Container(
                                 color: whiteColor,
                                   height: 100.h,
-                                  child: Center(
-                                    child: ListView.builder(
-                                      padding: EdgeInsets.zero,
-                                      shrinkWrap:true,
-                                      physics: const NeverScrollableScrollPhysics(),
-                                      itemCount:  completedOrdersScreenController.timeList.length,    
-                                      itemBuilder:(ctx,index) {
-                                        return InkWell(
-                                            onTap: (){
-                                              setState((){
-                                                completedOrdersScreenController.selectedTime = index;
-                                              });
-                                            },
-                                            child: Container(
-                                              color: whiteColor,
-                                                height:25.h,
-                                                child: Padding(
-                                                  padding: EdgeInsets.only(left: 5.w),
-                                                  child: Row(
-                                                    children: [
-                                                      Transform.scale(
-                                                        scale: 0.9.h,
-                                                        child: Padding(
-                                                          padding: EdgeInsets.only(right: 5.w,left: 5.w),
-                                                          child: Radio(value: index,
-                                                          visualDensity: const VisualDensity(
-                                                              horizontal: -2, vertical: 0), 
-                                                          activeColor: secondaryColor,
-                                                          hoverColor: Colors.grey,
-                                                          materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                                                          groupValue: completedOrdersScreenController.selectedTime,
-                                                          onChanged: (value){
-                                                            setState(() {
-                                                                  completedOrdersScreenController.selectedTime = value!;  
-                                                              });
-                                                          }),
+                                  child: Column(
+                                    children: [
+                                      ListView.builder(
+                                        padding: EdgeInsets.zero,
+                                        shrinkWrap:true,
+                                        physics: const NeverScrollableScrollPhysics(),
+                                        itemCount:  completedOrdersScreenController.timeList.length,    
+                                        itemBuilder:(ctx,index) {
+                                          return InkWell(
+                                              onTap: (){
+                                                setState((){
+                                                  completedOrdersScreenController.selectedTime = index;
+                                                });
+                                                if(index== completedOrdersScreenController.timeList.length -1){
+                                                  completedOrdersScreenController.isCustomDateSelected.value = true;
+                                                  completedOrdersScreenController.openDatePicker(context);
+                                                }
+                                              },
+                                              child: Container(
+                                                color: whiteColor,
+                                                  height:25.h,
+                                                  child: Padding(
+                                                    padding: EdgeInsets.only(left: 5.w),
+                                                    child: Row(
+                                                      children: [
+                                                        Transform.scale(
+                                                          scale: 0.9.h,
+                                                          child: Padding(
+                                                            padding: EdgeInsets.only(right: 5.w,left: 5.w),
+                                                            child: Radio(value: index,
+                                                            visualDensity: const VisualDensity(
+                                                                horizontal: -2, vertical: 0), 
+                                                            activeColor: secondaryColor,
+                                                            hoverColor: Colors.grey,
+                                                            materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                                                            groupValue: completedOrdersScreenController.selectedTime,
+                                                            onChanged: (value){
+                                                              setState(() {
+                                                                    completedOrdersScreenController.selectedTime = value!;  
+                                                                });
+                                                            }),
+                                                          ),
                                                         ),
-                                                      ),
-                                                      CustomText(text: completedOrdersScreenController.timeList[index].toString(),color: completedOrdersScreenController.selectedTime == index ? secondaryColor : textColor,
-                                                      fontSize: 16.sp, fontWeight: completedOrdersScreenController.selectedTime == index ? FontWeight.w500 : FontWeight.w400)
-                                                    ],
-                                                  ),
-                                                )),
-                                          );
-                                      }),
+                                                        CustomText(text: completedOrdersScreenController.timeList[index].toString(),color: completedOrdersScreenController.selectedTime == index ? secondaryColor : textColor,
+                                                        fontSize: 16.sp, fontWeight: completedOrdersScreenController.selectedTime == index ? FontWeight.w500 : FontWeight.w400)
+                                                      ],
+                                                    ),
+                                                  )),
+                                            );
+                                        }),
+                                      completedOrdersScreenController.isCustomDateSelected.value ?
+                                      Container(
+                                        // color: Colors.cyanAccent,
+                                        margin: EdgeInsets.only(left:17.w,right: 17.w),
+                                        child: Row(
+                                          crossAxisAlignment: CrossAxisAlignment.end,
+                                          children: [
+                                            Expanded(child: SizedBox(
+                                              height: 30.h,
+                                              child: ListTile(
+                                                dense: true,horizontalTitleGap: 5.w,
+                                                minLeadingWidth: 0,tileColor: Colors.brown,
+                                                minVerticalPadding: 0,
+                                                enabled: true,
+                                                contentPadding: EdgeInsets.zero,
+                                                leading: Icon(Icons.calendar_month,color: secondaryColor,size: 18.h),
+                                                title: CustomTextfield(controller: completedOrdersScreenController.fromDate,isReadyOnly: true,)))),
+                                            Padding(
+                                              padding: EdgeInsets.only(left: 12.w,right: 12.w),
+                                              child: CustomText(text: 'To'),
+                                            ),
+                                            Obx(() => Expanded(child: SizedBox(
+                                              height: 30.h,
+                                              child: ListTile(
+                                                dense: true,horizontalTitleGap: 5.w,
+                                                minLeadingWidth: 0,tileColor: Colors.brown,
+                                                minVerticalPadding: 0,
+                                                enabled: true,
+                                                contentPadding: EdgeInsets.zero,
+                                                leading: Icon(Icons.calendar_month,color: secondaryColor,size: 18.h),
+                                                title: CustomTextfield(controller: completedOrdersScreenController.toDate.value,isReadyOnly: true,)))),
+                                            )
+                                          ],
+                                        ),
+                                      ) : const SizedBox(),
+                                    ],
                                   )
                                   )),
                             Padding(
                               padding: EdgeInsets.only(left: 18.w,right: 18.w,bottom: 20.h,top: 14.h),
-                              child: const CustomAuthButtonWidget(buttonName: 'Apply',),
+                              child: CustomAuthButtonWidget(buttonName: 'Apply',onTap: goBack),
                             )
                           ],
                         ),
-                      ),
+                      ),)
                     );
                   },
                 ),

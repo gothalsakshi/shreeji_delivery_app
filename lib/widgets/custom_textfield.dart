@@ -26,7 +26,9 @@ class CustomTextfield extends StatelessWidget {
     this.contentPadding,
     this.maxLines,
     this.initialValue,
-    this.textAlignVertical,this.prefixIcon});
+    this.textAlignVertical,
+    this.prefixIcon,
+    this.isReadyOnly=false});
 
   final TextEditingController? controller;
   final void Function(String)? onChanged;
@@ -51,6 +53,7 @@ class CustomTextfield extends StatelessWidget {
   final String? initialValue;
   final TextAlignVertical? textAlignVertical;
   final Widget? prefixIcon;
+  final bool? isReadyOnly;
 
   @override
   Widget build(BuildContext context) {
@@ -59,7 +62,7 @@ class CustomTextfield extends StatelessWidget {
       children: [
         prefixAsset != null ?
         Container(
-            margin: EdgeInsets.only(right: 14.w,top: 5.h),
+            margin: EdgeInsets.only(right: 14.w),
             height: 17.h,
             width: 17.h,
             child: Center(
@@ -68,11 +71,19 @@ class CustomTextfield extends StatelessWidget {
         Expanded(
           child: SizedBox(
             child: TextFormField(
+              controller: controller,
+              initialValue: initialValue,
+              readOnly: isReadyOnly!,
               keyboardType: textInputType,
               validator: validator,
               maxLines: maxLines,
               cursorColor: primaryColor,
               obscureText: isPassword,
+              style: GoogleFonts.montserrat(
+                fontSize: 13.sp,
+                fontWeight: FontWeight.w600,
+                color: textColor
+              ),
               decoration: InputDecoration(
                 suffixIcon: suffixIcon,
                   prefixIcon: prefixIcon,
@@ -84,17 +95,18 @@ class CustomTextfield extends StatelessWidget {
                   focusedBorder: UnderlineInputBorder(
                       borderSide: BorderSide(color:  textColor.withOpacity(0.2))),
                   isDense: true,
+                  
                   errorStyle: GoogleFonts.montserrat(
-                      fontSize: 12.sp,
+                      fontSize: 13.sp,
                       fontWeight: FontWeight.w600,
                       // color: textColor.withOpacity(0.5),
                       ),
                   labelStyle: GoogleFonts.montserrat(
-                      fontSize: 12.sp,
+                      fontSize: 13.sp,
                       fontWeight: FontWeight.w600,
                       color: textColor.withOpacity(0.5)),
                   hintStyle: GoogleFonts.montserrat(
-                      fontSize: 12.sp,
+                      fontSize: 13.sp,
                       fontWeight: FontWeight.w600,
                       color: textColor.withOpacity(0.5)),
                   contentPadding: EdgeInsets.only(bottom: 4.h)),

@@ -54,7 +54,10 @@ class ForgotPasswordScreen extends StatelessWidget with ValidationsMixin{
                         child: CustomTextfield(
                           validator: validatedPhoneNumber,
                           textInputType: TextInputType.number,
-                          prefixAsset: 'assets/icons/phone_icon.svg',hintText: 'Enter your Mobile number',prefixIcon: CustomText(text: ' +91  |  ',fontSize: 12.sp,fontWeight: FontWeight.w600,color: textColor.withOpacity(0.5))),
+                          prefixAsset: 'assets/icons/phone_icon.svg',hintText: 'Enter your Mobile number',prefixIcon: Padding(
+                            padding: EdgeInsets.only(bottom: 3.h),
+                            child: CustomText(text: ' +91  |  ',fontSize: 13.sp,fontWeight: FontWeight.w600,color: textColor.withOpacity(0.5)),
+                          )),
                       ),
                       InkWell(
                         onTap: forgotPasswordScreenController.goToOtpVerificationScreen,

@@ -6,6 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:shreeji_delivery_app/pages/order/issue_details/issue_details_screen_controller.dart';
+import 'package:shreeji_delivery_app/routes/app_route.dart';
 import 'package:shreeji_delivery_app/theme/colors.dart';
 import 'package:shreeji_delivery_app/utils/utility.dart';
 import 'package:shreeji_delivery_app/widgets/custom_button_widget.dart';
@@ -40,7 +41,7 @@ class IssueDetailsScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    CustomText(text: 'Issue Type',fontSize: 13.sp,color: textColor,fontWeight: FontWeight.w500),
+                    CustomText(text: 'Issue Type',fontSize: 14.sp,color: textColor,fontWeight: FontWeight.w500),
                     Padding(
                       padding: EdgeInsets.only(top: 14.h,bottom: 5.h),
                       child: Divider(color: textColor.withOpacity(0.2),height: 1.h),
@@ -49,7 +50,7 @@ class IssueDetailsScreen extends StatelessWidget {
                     Obx(() => DropdownButton(
                       icon: SvgPicture.asset('assets/icons/down_arrow.svg'),
                       isExpanded: true,
-                      hint: CustomText(text: 'Type your remarks here...',fontSize: 12.sp,fontWeight: FontWeight.w600,color: textColor.withOpacity(0.5)),
+                      hint: CustomText(text: 'Select the type of issue',fontSize: 13.sp,fontWeight: FontWeight.w600,color: textColor.withOpacity(0.5)),
                       value: issueDetailScreenController.selectedDropValue.value == '' ? null : issueDetailScreenController.selectedDropValue.value,
                       items: issueDetailScreenController.countries.map((country){
                           return DropdownMenuItem( 
@@ -82,7 +83,7 @@ class IssueDetailsScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    CustomText(text: 'Remark',fontSize: 13.sp,color: textColor,fontWeight: FontWeight.w500),
+                    CustomText(text: 'Remark',fontSize: 14.sp,color: textColor,fontWeight: FontWeight.w500),
                     Padding(
                       padding: EdgeInsets.only(top: 14.h,bottom: 14.h),
                       child: Divider(color: textColor.withOpacity(0.2),height: 1.h),
@@ -111,7 +112,7 @@ class IssueDetailsScreen extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      CustomText(text: 'Upload Payment Document',fontSize: 13.sp,color: textColor,fontWeight: FontWeight.w500),
+                      CustomText(text: 'Upload Payment Document',fontSize: 14.sp,color: textColor,fontWeight: FontWeight.w500),
                       Obx(() => issueDetailScreenController.list.isNotEmpty ?
                       InkWell(
                         onTap: ()=> showUploadImageDialog(context, issueDetailScreenController.pickImage, issueDetailScreenController.takeImage),
@@ -192,8 +193,12 @@ class IssueDetailsScreen extends StatelessWidget {
             ),
             Padding(
                 padding: EdgeInsets.only(left: 30.w,right: 30.w,top: 40.h,bottom: 20.h),
-                child: const CustomAuthButtonWidget(
-                  // onTap: orderDetailsScreenController.goToPaymentScreen,
+                child: CustomAuthButtonWidget(
+                  onTap: (){
+                    Get.toNamed(AppRoutes.emptyOrderScreen);
+                    // goBack();
+                    // ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: CustomText(text: 'Upload successfully',color: whiteColor),backgroundColor: secondaryColor.withOpacity(0.8)));
+                  },
                   buttonName: 'Submit'),
               ),
           ],
