@@ -92,6 +92,8 @@ class CompletedOrderScreen extends StatelessWidget {
                                                 if(index== completedOrdersScreenController.timeList.length -1){
                                                   completedOrdersScreenController.isCustomDateSelected.value = true;
                                                   completedOrdersScreenController.openDatePicker(context);
+                                                }else{
+                                                  completedOrdersScreenController.isCustomDateSelected.value = false;
                                                 }
                                               },
                                               child: Container(

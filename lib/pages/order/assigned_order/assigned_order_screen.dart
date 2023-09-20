@@ -77,9 +77,11 @@ class AssignedOrderScreen extends StatelessWidget {
                                                 setState((){
                                                   assignedOrderScreenController.selectedTime = index;
                                                 });
-                                                if(index== assignedOrderScreenController.timeList.length -1){
+                                                if(index == assignedOrderScreenController.timeList.length -1){
                                                   assignedOrderScreenController.isCustomDateSelected.value = true;
                                                   assignedOrderScreenController.openDatePicker(context);
+                                                }else{
+                                                  assignedOrderScreenController.isCustomDateSelected.value = false;
                                                 }
                                               },
                                               child: Container(

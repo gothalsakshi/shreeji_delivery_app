@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -28,7 +29,8 @@ class CustomTextfield extends StatelessWidget {
     this.initialValue,
     this.textAlignVertical,
     this.prefixIcon,
-    this.isReadyOnly=false});
+    this.isReadyOnly=false,
+    this.inputFormatters});
 
   final TextEditingController? controller;
   final void Function(String)? onChanged;
@@ -54,6 +56,7 @@ class CustomTextfield extends StatelessWidget {
   final TextAlignVertical? textAlignVertical;
   final Widget? prefixIcon;
   final bool? isReadyOnly;
+  final List<TextInputFormatter>? inputFormatters;
 
   @override
   Widget build(BuildContext context) {
@@ -79,6 +82,7 @@ class CustomTextfield extends StatelessWidget {
               maxLines: maxLines,
               cursorColor: primaryColor,
               obscureText: isPassword,
+              inputFormatters: inputFormatters,
               style: GoogleFonts.montserrat(
                 fontSize: 13.sp,
                 fontWeight: FontWeight.w600,

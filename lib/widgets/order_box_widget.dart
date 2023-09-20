@@ -74,7 +74,7 @@ class OrderBox extends StatelessWidget {
               Row(
                 children: [
                   CustomText(text: 'No of Items in Order:  ',fontSize: 13.sp,fontWeight: FontWeight.w400,color: textColor),
-                  CustomText(text: '05',fontSize: 11.sp,fontWeight: FontWeight.w500,color: textColor)
+                  CustomText(text: '05',fontSize: 13.sp,fontWeight: FontWeight.w500,color: textColor)
                 ],
               ),
 

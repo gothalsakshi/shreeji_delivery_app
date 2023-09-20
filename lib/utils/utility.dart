@@ -67,7 +67,7 @@ void showUploadImageDialog(context,VoidCallback pickImage, VoidCallback takeImag
           return Align(
             alignment: Alignment.bottomCenter,
             child: Container(
-              height: 150.h,
+              height: 160.h,
               decoration: BoxDecoration(
                 color: whiteColor,
                 borderRadius: BorderRadius.only(topLeft: Radius.circular(15.r),topRight: Radius.circular(15.r))
@@ -95,14 +95,23 @@ void showUploadImageDialog(context,VoidCallback pickImage, VoidCallback takeImag
                     child: Divider(color: textColor.withOpacity(0.2)),
                   ),
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      InkWell(
+                      GestureDetector(
                         onTap: pickImage,
                         child: Container(
-                          margin: EdgeInsets.only(right: getWidth(context) *0.2),
-                          height: 48.h,width: 48.w,
-                          child: SvgPicture.asset('assets/icons/gallery_icon.svg',height: 48.h,width: 48.w,))),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Container(
+                                margin: EdgeInsets.only(bottom: 10.h),
+                                height: 40.h,width: 40.w,
+                                child: SvgPicture.asset('assets/icons/gallery_icon.svg',height: 40.h,width: 40.w)),
+                              Center(child: CustomText(text: 'Select From Gallery',fontSize: 12.sp,fontWeight: FontWeight.w400,color: secondaryColor,textAlign: TextAlign.center))
+                            ],
+                          ),
+                        )),
                       DottedLine(
                         dashLength: 5.h,
                         dashGapLength: 5.h,
@@ -115,9 +124,18 @@ void showUploadImageDialog(context,VoidCallback pickImage, VoidCallback takeImag
                       InkWell(
                         onTap: takeImage,
                         child: Container(
-                          margin: EdgeInsets.only(left: getWidth(context) *0.2),
-                          height: 48.h,width: 48.w,
-                          child: SvgPicture.asset('assets/icons/camera_icon.svg',height: 48.h,width: 48.w,)))
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Container(
+                                margin: EdgeInsets.only(bottom: 10.h),
+                                height: 40.h,width: 40.w,
+                                child: SvgPicture.asset('assets/icons/camera_icon.svg',height: 40.h,width: 40.w)),
+                              Center(child: CustomText(text: 'Open Camera',fontSize: 12.sp,fontWeight: FontWeight.w400,color: secondaryColor,textAlign: TextAlign.center))
+                            ],
+                          ),
+                        ))
                     ],
                   ),
                 ],

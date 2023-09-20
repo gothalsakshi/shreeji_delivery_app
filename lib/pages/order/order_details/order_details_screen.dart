@@ -44,40 +44,51 @@ class OrderDetailsScreen extends StatelessWidget {
                   addressTile('Address : ', 'Akshya Nagar 1st Block 1st Cross, Rammurthy nagar, Bangalore-560016'),
                   addressTile('Landmark : ', 'RD LANE'),
                   addressTile('Area : ', 'RD LANE'),
-                  addressTile('City : ', 'Bangalore'),
-                  Padding(
-                    padding: EdgeInsets.only(top: 12.h),
-                    child: Row(
-                      children: [
-                         Padding(
-                           padding: EdgeInsets.only(right: 20.w),
-                           child: InkWell(
-                            onTap: ()async{
-                              await launchUrl(Uri(scheme: 'tel',path: '0000000000'));
-                            },
-                             child: CircleAvatar(
-                              backgroundColor: primaryColor,
-                              radius: 15.r,
-                              child: SizedBox(
-                                height: 17.h,width: 17.h,
-                                child: SvgPicture.asset('assets/icons/phone_icon.svg'))),
-                           ),
-                         ),
-                         InkWell(
+                  // addressTile('City : ', 'Bangalore'),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          CustomText(text: 'City : ',fontSize: 13.sp,fontWeight: FontWeight.w500,color: textColor),
+                          CustomText(text: 'Bangalore',fontSize: 13.sp,fontWeight: FontWeight.w400,color: textColor,maxLines: 2,),
+                        ],
+                      ),
+                      Row(
+                        children: [
+                        Padding(
+                          padding: EdgeInsets.only(right: 20.w),
+                          child: InkWell(
                           onTap: ()async{
-                            await launchUrlString('https://www.google.com/maps/search/?l&query=30.625168,131.75150000');
-                          
+                            await launchUrl(Uri(scheme: 'tel',path: '0000000000'));
                           },
                            child: CircleAvatar(
                             backgroundColor: primaryColor,
                             radius: 15.r,
                             child: SizedBox(
                               height: 17.h,width: 17.h,
-                              child: SvgPicture.asset('assets/icons/address_icon.svg'))),
-                         )
-                      ],
-                    ),
+                              child: SvgPicture.asset('assets/icons/phone_icon.svg'))),
+                         ),
+                       ),
+                       InkWell(
+                        onTap: ()async{
+                          await launchUrlString('https://www.google.com/maps/search/?l&query=30.625168,131.75150000');
+                        
+                        },
+                         child: CircleAvatar(
+                          backgroundColor: primaryColor,
+                          radius: 15.r,
+                          child: SizedBox(
+                            height: 17.h,width: 17.h,
+                            child: SvgPicture.asset('assets/icons/address_icon.svg'))),
+                       )
+                    ],
                   )
+                    ],
+                  ),
+                  
                 ],
               ),
             ),

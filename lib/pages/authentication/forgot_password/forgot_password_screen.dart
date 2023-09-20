@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -52,6 +53,9 @@ class ForgotPasswordScreen extends StatelessWidget with ValidationsMixin{
                       Padding(
                         padding: EdgeInsets.only(bottom: 35.h,top: 20.h),
                         child: CustomTextfield(
+                          inputFormatters: [
+                            LengthLimitingTextInputFormatter(10),
+                          ],
                           validator: validatedPhoneNumber,
                           textInputType: TextInputType.number,
                           prefixAsset: 'assets/icons/phone_icon.svg',hintText: 'Enter your Mobile number',prefixIcon: Padding(

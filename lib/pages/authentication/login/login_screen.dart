@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:shreeji_delivery_app/pages/authentication/login/login_screen_controller.dart';
@@ -50,6 +51,9 @@ class LoginScreen extends StatelessWidget with ValidationsMixin {
                       Padding(
                         padding: EdgeInsets.only(bottom: 25.h),
                         child: CustomTextfield(
+                          inputFormatters: [
+                            LengthLimitingTextInputFormatter(10),
+                          ],
                           textInputType: TextInputType.number,
                           validator: validatedPhoneNumber,
                           contentPadding: EdgeInsets.all(2.h),
