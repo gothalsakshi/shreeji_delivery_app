@@ -84,14 +84,14 @@ class OtpVerificationScreen extends StatelessWidget {
                           ),
                         ),
                       ),
-                      Padding(
+                     Obx(() =>  Padding(
                         padding: EdgeInsets.only(top: 13.h, bottom: 35.h,right: 15.w),
                         child: CustomText(
-                            text: '00:56 sec',
+                            text: '00:${otpVerificationScreenController.start.value} sec',
                             fontSize: 12.sp,
                             fontWeight: FontWeight.w500,
                             color: textColor.withOpacity(0.3)),
-                      ),
+                      )),
                       InkWell(
                         onTap: otpVerificationScreenController.goToResetPasswordScreen,
                         child: const CustomAuthButtonWidget(
@@ -113,7 +113,9 @@ class OtpVerificationScreen extends StatelessWidget {
                                 ),
                                 TextSpan(
                                   recognizer: TapGestureRecognizer()
-                                    ..onTap = () {},
+                                    ..onTap = () {
+                                      otpVerificationScreenController.start.value = 60;
+                                    },
                                   text: "Resend",
                                   style: GoogleFonts.montserrat(
                                     fontSize: 13.sp,
